@@ -65,7 +65,7 @@ Recursion is a method where the solution to a problem depends on solutions to sm
 To install this project, clone the repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/your-username/data-structures-and-algorithms.git
-
+git clone https://github.com/BCIamLong/data-structures-and-algorithms.git
+cd data-structures-and-algorithms
 
 ```
