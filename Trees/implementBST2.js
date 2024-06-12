@@ -192,13 +192,53 @@ console.log("------------------------------------------------");
 bst.remove(3);
 bst.remove(20);
 // console.log(bst.root.right);
-console.log(JSON.stringify(traverse(bst.root)));
+// console.log(JSON.stringify(traverse(bst.root)));
+console.log(JSON.stringify(traverseRecursive(bst.root)));
+// console.log(JSON.stringify(traversalIterative(bst.root)));
 
 function traverse(node) {
   const tree = { value: node.value };
   tree.left = node.left === null ? null : traverse(node.left);
   tree.right = node.right === null ? null : traverse(node.right);
   return tree;
+}
+
+function traverseRecursive(node) {
+  // * assign the root node
+  // * traverse right and left
+  if (!node) return;
+  const result = { ...node };
+  if (node.left) result.left = traverse(node.left);
+  if (node.right) result.right = traverse(node.right);
+
+  return result;
+  // if (node.right) return { ...node, right: traverse(node.right) };
+  // if (node.left) return { ...node, left: traverse(node.left) };
+  // if (node.right) return { ...node, right: traverse(node.right) };
+}
+
+function traversalIterative(node) {
+  const result = { value: node.value };
+
+  let currentNodeLeft = node;
+  let currentNodeRight = node;
+  let resultTmpLeft = result;
+  while (currentNodeLeft) {
+    resultTmpLeft.left = currentNodeLeft.left;
+
+    resultTmpLeft = resultTmpLeft.left;
+    currentNodeLeft = currentNodeLeft.left;
+  }
+
+  let resultTmpRight = result;
+  while (currentNodeRight) {
+    resultTmpRight.right = currentNodeRight.right;
+
+    resultTmpRight = resultTmpRight.right;
+    currentNodeRight = currentNodeRight.right;
+  }
+
+  return result;
 }
 
 const ob = {
@@ -224,5 +264,85 @@ const ob = {
       },
       right: { value: 180, left: null, right: null },
     },
+  },
+};
+
+const ob2 = {
+  value: 9,
+  right: {
+    value: 90,
+    right: {
+      value: 170,
+      right: { value: 180, right: null, left: null },
+      left: {
+        value: 100,
+        right: { value: 150, right: null, left: null },
+        left: null,
+      },
+    },
+    left: { value: 15, right: null, left: null },
+  },
+  left: {
+    value: 4,
+    right: {
+      value: 7,
+      right: { value: 8, right: null, left: null },
+      left: { value: 5, right: null, left: null },
+    },
+    // *FIXED
+    // // ! issue: traverseRecursive
+    // * some how that the left: { value: 1, right: null, left: null } doesn't appear here
+  },
+};
+
+const ob2Fixed = {
+  value: 9,
+  right: {
+    value: 90,
+    left: { value: 15, left: null, right: null },
+    right: {
+      value: 170,
+      left: {
+        value: 100,
+        left: null,
+        right: { value: 150, left: null, right: null },
+      },
+      right: { value: 180, left: null, right: null },
+    },
+  },
+  left: {
+    value: 4,
+    left: { value: 1, left: null, right: null },
+    right: {
+      value: 7,
+      left: { value: 5, left: null, right: null },
+      right: { value: 8, left: null, right: null },
+    },
+  },
+};
+
+const ob3 = {
+  value: 9,
+  left: {
+    value: 4,
+    right: {
+      value: 7,
+      right: { value: 8, right: null, left: null },
+      left: { value: 5, right: null, left: null },
+    },
+    left: { value: 1, right: null, left: null },
+  },
+  right: {
+    value: 90,
+    right: {
+      value: 170,
+      right: { value: 180, right: null, left: null },
+      left: {
+        value: 100,
+        right: { value: 150, right: null, left: null },
+        left: null,
+      },
+    },
+    left: { value: 15, right: null, left: null },
   },
 };
