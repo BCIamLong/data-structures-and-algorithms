@@ -15,6 +15,7 @@ Welcome to the Data Structures and Algorithms project! This repository contains 
   - [Graphs](#graphs)
 - [Algorithms](#algorithms)
   - [Recursion](#recursion)
+  - [Sorting](#sorting)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -59,6 +60,18 @@ A graph is a data structure that consists of a finite set of nodes (or vertices)
 ### Recursion
 
 Recursion is a method where the solution to a problem depends on solutions to smaller instances of the same problem. Recursion solves such recursive problems by using functions that call themselves from within their own code.
+
+### Sorting
+
+Sorting is the process of arranging data in a particular order (either ascending or descending). Sorting algorithms are fundamental and widely used in various applications. Some of the most common sorting algorithms include:
+
+- **Bubble Sort**: A simple comparison-based algorithm where each pair of adjacent elements is compared and swapped if they are in the wrong order.
+- **Selection Sort**: An in-place comparison-based algorithm where the list is divided into two parts, the sorted part at the beginning and the unsorted part, and repeatedly selects the smallest element from the unsorted part and moves it to the sorted part.
+- **Insertion Sort**: Builds the sorted array one item at a time by repeatedly picking the next item and inserting it into the correct position.
+- **Merge Sort**: A divide-and-conquer algorithm that divides the list into two halves, recursively sorts them, and then merges the sorted halves.
+- **Quick Sort**: Another divide-and-conquer algorithm that selects a pivot element, partitions the array around the pivot, and recursively sorts the partitions.
+- **Heap Sort**: A comparison-based sorting algorithm that uses a binary heap data structure to sort elements.
+
 
 ## Installation
 
