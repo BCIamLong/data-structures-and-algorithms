@@ -3,14 +3,36 @@
 
 const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
+// let a = 0;
 function quickSort(array, left, right) {
-  const { leftArr, rightArr, pivotVal } = partition(array, 0, left, right);
-  if (!leftArr?.length && !rightArr?.length) return [];
+  // a++;
+  // const pivot = Math.floor(array.length / 2);
+  const pivot = 0;
+  const { leftArr, rightArr, pivotVal } = partition(array, pivot, left, right);
+  if (!leftArr?.length && !rightArr?.length && !pivotVal) return [];
 
   // console.log(leftArr);
+  // console.log(pivotVal);
   // console.log(rightArr);
 
-  return [...quickSort(leftArr), pivotVal, ...quickSort(rightArr)];
+  // const rightCheck = quickSort(rightArr, 0, rightArr.length - 1);
+  // const leftCheck = quickSort(leftArr, 0, leftArr.length - 1);
+
+  // if (typeof rightCheck === "number" && Array.isArray(leftCheck))
+  //   return [...leftCheck, pivotVal, rightCheck];
+
+  // if (typeof leftCheck === "number" && Array.isArray(rightCheck))
+  //   return [leftCheck, pivotVal, ...rightCheck];
+
+  // if (typeof rightCheck === "number" && typeof leftCheck === "number")
+  //   return [leftCheck, pivotVal, rightCheck];
+
+  // if (Array.isArray(leftCheck) && Array.isArray(rightCheck))
+  return [
+    ...quickSort(leftArr, 0, leftArr.length - 1),
+    pivotVal,
+    ...quickSort(rightArr, 0, rightArr.length - 1),
+  ];
 }
 
 function partition(array, pivot, left, right) {
@@ -21,7 +43,11 @@ function partition(array, pivot, left, right) {
   // while (i < array.length) {
   let pivotVal = array[pivot];
   while (
-    !(array[pivot] >= array[pivot - 1] && array[pivot] <= array[pivot + 1])
+    !(
+      array[pivot] >= array[pivot - 1] &&
+      array[pivot] <= array[pivot + 1] &&
+      i > array.length
+    )
   ) {
     if (i === array.length - 1 && array[pivot] === pivotVal) {
       return {
@@ -78,14 +104,20 @@ function swap(array, firstIndex, secondIndex) {
 }
 
 //Select first and last index as 2nd and 3rd parameters
-quickSort(numbers, 0, numbers.length - 1);
-console.log(numbers);
+const result = quickSort(numbers, 0, numbers.length - 1);
+console.log(result);
+// console.log(a);
+// console.log(numbers);
 
-// const numbers2 = [1, 3, 4, 5, 2];
+// const numbers2 = [2, 3, 4, 5, 1];
 // quickSort(numbers2, 0, numbers.length - 1);
 // console.log(numbers2);
 
-// console.log(partition([44, 6, 2, 1, 5, 63, 87, 4], 0, 0, numbers.length - 1));
+// console.log("------------------------------------------------------------");
+
+// console.log(partition([44, 6, 2, 1, 5, 63, 87, 4], 0, 0, 7));
+// console.log(partition([4, 6, 2, 1, 5], 0, 0, 4));
+// console.log(partition(numbers2, 0, 0, numbers2.length - 1));
+// console.log(partition([283], 0, 0, 0));
 
 // const number2 = [0, 44, 6, 2, 1, 5, 63, 87, 4];
-// console.log(partition(number2, 0, 0, number2.length - 1));
