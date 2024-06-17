@@ -1,0 +1,1 @@
+// #1 - Sort 10 schools around your house by distance: Insertion Sort porque es un tamaño de entrada pequeño, y en estos casos este algoritmo es muy eficaz, además si la entrada está (o casi) ordenada será aún más rápido.
